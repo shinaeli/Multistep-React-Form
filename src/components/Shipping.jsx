@@ -1,9 +1,8 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { FormContext } from "../FormContext/FormContext"
 
 const Shipping = () => {
-    const {data, setData} = useContext(FormContext)
-    const [sameShipping, setSameShipping] = useState(false);
+    const {data, setData, sameShipping, setSameShipping} = useContext(FormContext)
 
     const content = (
         <>
@@ -154,9 +153,9 @@ const Shipping = () => {
                 type="text"
                 id="shipZipCode"
                 name="shipZipCode"
-                placeholder="12345"
-                pattern="[0-9]{5}"
-                maxLength="5"
+                placeholder="123456"
+                pattern="[0-9]{6}"
+                maxLength="6"
                 value={sameShipping ? data["billZipCode"] : data["shipZipCode"]}
                 onChange={e => setData({...data, shipZipCode: e.target.value})}
                 disabled={sameShipping}

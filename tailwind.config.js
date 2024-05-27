@@ -14,7 +14,27 @@ export default {
       },
       colors: {
         white: '#fff',
-      }
+        black: '#000',
+      },
+      keyframes: {
+        titleSlideIn: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+        footerSlideIn: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+        appear: {
+          '0%': { transform: 'scaleY(0)' },
+          '100%': { transform: 'scaleY(1)' },
+        }
+      },
+      animation: {
+        slideInTitle: 'titleSlideIn 1s ease-in',
+        itemAppear: 'appear 2s ease-in-out',
+        slideInFooter: 'footerSlideIn 1s ease-in',
+      },
     },
   },
   plugins: [],

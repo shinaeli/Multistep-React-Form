@@ -135,9 +135,9 @@ const Billing = () => {
                 type="text"
                 id="billZipCode"
                 name="billZipCode"
-                placeholder="12345"
-                pattern="[0-9]{5}"
-                maxLength="5"
+                placeholder="123456"
+                pattern="[0-9]{6}"
+                maxLength="6"
                 value={data["billZipCode"]}
                 onChange={e => setData({...data, billZipCode: e.target.value})}
             />
