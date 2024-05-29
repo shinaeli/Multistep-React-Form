@@ -4,7 +4,7 @@ import { FormContext } from "../FormContext/FormContext";
 
 const Form = () => {
     // Import variables and functions using the 'useContext' hook
-    const {data, setData, page, setPage, handlePrev, handleNext, showNext} = useContext(FormContext);
+    const {data, setData, page, setPage, handlePrev, handleNext, showNext, sameShipping} = useContext(FormContext);
 
     const title = {
         0: 'Billing Details',
@@ -44,11 +44,11 @@ const Form = () => {
                 <h2 className="title">{title[page]}</h2>
 
                 <div className="flex-header w-[35%]">
-
+                    {/* If page is greater than zero, show 'Prev' button */}
                     <button className={ page > 0  ? 'button' : 'hidden'} onClick={handlePrev} type="button">Prev</button>
-
-                    <button onClick={handleNext} className={showNext ? 'button' : 'hidden'} type="button">Next</button>
-
+                    {/* If page is 1 and 'sameShipping' is true or 'showNext' is true , show 'Next' button*/}
+                    <button onClick={handleNext} className={showNext || (page === 1 && (sameShipping === true)) ? 'button' : 'hidden'} type="button">Next</button>
+                    {/* If 'data["optIn"] is true, show 'Submit' button */}
                     <button onClick={handleSubmit} className={data["optIn"] ? 'button' : 'hidden'} type="submit">Submit</button>
                 </div>
             </header>

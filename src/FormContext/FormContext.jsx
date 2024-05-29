@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 export const FormContext = createContext();
 
 export const FormContextProvider = ({ children }) => {
+    // Create a state 'sameShipping' to control the 'Same as Billing Address' checkbox
     const [sameShipping, setSameShipping] = useState(false);
 
     // Create an object 'data' stored in a state to control each user data 
@@ -35,7 +36,7 @@ export const FormContextProvider = ({ children }) => {
         } else {
             setPage(prev => prev - 1);
         }
-        console.log(page);
+        // console.log(page);
     };
 
     const handleNext = () => {
@@ -44,7 +45,7 @@ export const FormContextProvider = ({ children }) => {
         } else {
             setPage(prev => prev + 1);
         }
-        console.log(page);
+        // console.log(page);
     };
 
     // This function checks if there is no empty input field.
@@ -55,13 +56,15 @@ export const FormContextProvider = ({ children }) => {
         setShowNext(false);
     }, [page]);
 
-    // The function in the useEffect runs if there's a chnage in any input field i.e. the 'data' object
+    // The function in the useEffect runs if there's a change in any input field i.e. the 'data' object
     useEffect(() => {
         // If page is zero and every 'data' property that starts with 'bill' is not empty
         if(page === 0 && checkArray(Object.keys(data).filter(key => key.startsWith('bill')).map(item => data[item]))) {
+            // If true, set 'sameShipping' to true
             setShowNext(true);
             // If page is one and every 'data' property that starts with 'ship' is not empty
         } else if (page === 1 && checkArray(Object.keys(data).filter(key => key.startsWith('ship')).map(item => data[item]))) {
+            // If true, set 'sameShipping' to true
             setShowNext(true);
         }
     }, [data]);
